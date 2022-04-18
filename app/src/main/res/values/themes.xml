@@ -1,0 +1,39 @@
+<!--
+/*
+ * @author: Rachel Stinnett
+ * @file: themes.xml
+ * @assignment: Programming Assignment 6- Flickr Viewer
+ * @course: CSC 317; Spring 2022
+ * @description: The purpose of this program is to be create an application
+ * for browsing and viewing photos from flickr. This program will allow the
+ * user to view and browse through actual photos that users of clicker have
+ * posted, and that are publicly available. If a user wants more details about
+ * an image, the user is able to click on the image, which would take the user
+ * to a web page view of the actual post of the photo on the flickr site.
+ * The functionality for browsing and viewing photos relies  on Flickr’s
+ * public API. This program uses a MainActivity which has 3 async tasks for
+ * downloading the Json object and the 2 images. Then there is a WebViewActivity
+ * that is used to display the website when the image is clicked. Then there
+ * is a LoadNewImageService which is used to load new images in the background
+ * every 10 seconds when the app is no longer active.  In this themes.xml, is
+ * where the theme of the program is specified. This app does not have much
+ * customization since the main focus in on the photos and buttons that make
+ * the app functional.
+ */
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FlickrViewer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

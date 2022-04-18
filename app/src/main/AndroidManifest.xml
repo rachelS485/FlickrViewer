@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * @author: Rachel Stinnett
+ * @file: AndroidManifest.xml
+ * @assignment: Programming Assignment 6- Flickr Viewer
+ * @course: CSC 317; Spring 2022
+ * @description: The purpose of this program is to be create an application
+ * for browsing and viewing photos from flickr. This program will allow the
+ * user to view and browse through actual photos that users of clicker have
+ * posted, and that are publicly available. If a user wants more details about
+ * an image, the user is able to click on the image, which would take the user
+ * to a web page view of the actual post of the photo on the flickr site.
+ * The functionality for browsing and viewing photos relies  on Flickr’s
+ * public API. This program uses a MainActivity which has 3 async tasks for
+ * downloading the Json object and the 2 images. Then there is a WebViewActivity
+ * that is used to display the website when the image is clicked. Then there
+ * is a LoadNewImageService which is used to load new images in the background
+ * every 10 seconds when the app is no longer active. This AndroidManifest.xml is the
+ * manifest file which describes essential information about the app to the Android
+ * build tools, the Android operating system, and Google Play.
+ */
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.flickrviewer">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FlickrViewer">
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:name=".LoadNewImageService" />
+    </application>
+
+</manifest>

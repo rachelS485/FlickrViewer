@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * @author: Rachel Stinnett
+ * @file: activity_main.xml
+ * @assignment: Programming Assignment 6- Flickr Viewer
+ * @course: CSC 317; Spring 2022
+ * @description:The purpose of this program is to be create an application
+ * for browsing and viewing photos from flickr. This program will allow the
+ * user to view and browse through actual photos that users of clicker have
+ * posted, and that are publicly available. If a user wants more details about
+ * an image, the user is able to click on the image, which would take the user
+ * to a web page view of the actual post of the photo on the flickr site.
+ * The functionality for browsing and viewing photos relies  on Flickr’s
+ * public API. This program uses a MainActivity which has 3 async tasks for
+ * downloading the Json object and the 2 images. Then there is a WebViewActivity
+ * that is used to display the website when the image is clicked. Then there
+ * is a LoadNewImageService which is used to load new images in the background
+ * every 10 seconds when the app is no longer active. This activity_main.xml
+ * is responsible for laying out the Ui elements of the program by using
+ * ConstraintLayout which allows the views to be laid out in a flat view
+ * hierarchy relative to one another. This xml file uses ImageViews for
+ * the two main flickr images and then 3 ImageViews with 3 TextViews below
+ * each image in order to display the photo information below that updates
+ * in MainActivity.java. Then this activity_main.xml has 3 ImageViews that
+ * function as the previous,refresh, and next buttons. For these images an
+ * icon with a transparent background is used to look like an actual button.
+ */
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackgroundColor"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageOne"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/flickrlogodefault"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="25dp"
+        android:onClick="loadWebPageOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <ImageView
+        android:id="@+id/calandarIconOne"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/calandaricon"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/calandarTextOne"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/dateOne"
+        android:textColor="@color/textColor"
+        android:textSize="6pt"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toRightOf="@id/calandarIconOne"/>
+    <ImageView
+        android:id="@+id/fileIconOne"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/fileicon"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/fileTextOne"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/fileOne"
+        android:textColor="@color/textColor"
+        android:textSize="6pt"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toRightOf="@id/fileIconOne"/>
+    <ImageView
+        android:id="@+id/tagIconOne"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/tagicon"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/tagTextOne"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/tagOne"
+        android:textColor="@color/textColor"
+        android:textSize="6pt"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toRightOf="@id/tagIconOne"/>
+
+    <ImageView
+        android:id="@+id/imageTwo"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/flickrlogodefault"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="100dp"
+        android:onClick="loadWebPageTwo"
+        app:layout_constraintTop_toBottomOf="@id/imageOne"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <ImageView
+        android:id="@+id/calandarIconTwo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/calandaricon"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/imageTwo"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/calandarTextTwo"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/dateTwo"
+        android:textColor="@color/textColor"
+        android:textSize="6pt"
+        app:layout_constraintTop_toBottomOf="@id/imageTwo"
+        app:layout_constraintLeft_toRightOf="@id/calandarIconTwo"/>
+    <ImageView
+        android:id="@+id/fileIconTwo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/fileicon"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/imageTwo"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/fileTextTwo"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/fileTwo"
+        android:textColor="@color/textColor"
+        android:textSize="6pt"
+        app:layout_constraintTop_toBottomOf="@id/imageTwo"
+        app:layout_constraintLeft_toRightOf="@id/fileIconTwo"/>
+    <ImageView
+        android:id="@+id/tagIconTwo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/tagicon"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/imageTwo"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/tagTextTwo"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/tagTwo"
+        android:textColor="@color/textColor"
+        android:textSize="6pt"
+        app:layout_constraintTop_toBottomOf="@id/imageTwo"
+        app:layout_constraintLeft_toRightOf="@id/tagIconTwo"/>
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/previous"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:onClick="changeToPreviousImage"
+        app:layout_constraintTop_toBottomOf="@id/calandarTextTwo"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <ImageView
+        android:id="@+id/refreshButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/refresh"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="25dp"
+        android:onClick="changeToReset"
+        app:layout_constraintTop_toBottomOf="@id/fileTextTwo"
+        app:layout_constraintLeft_toRightOf="@id/backButton" />
+    <ImageView
+        android:id="@+id/nextButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/next"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="25dp"
+        android:onClick="changeToNextImage"
+        app:layout_constraintTop_toBottomOf="@id/tagTextTwo"
+        app:layout_constraintLeft_toRightOf="@id/refreshButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

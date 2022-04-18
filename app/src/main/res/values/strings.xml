@@ -1,0 +1,37 @@
+<!--
+/*
+ * @author: Rachel Stinnett
+ * @file: strings.xml
+ * @assignment: Programming Assignment 6- Flickr Viewer
+ * @course: CSC 317; Spring 2022
+ * @description: The purpose of this program is to be create an application
+ * for browsing and viewing photos from flickr. This program will allow the
+ * user to view and browse through actual photos that users of clicker have
+ * posted, and that are publicly available. If a user wants more details about
+ * an image, the user is able to click on the image, which would take the user
+ * to a web page view of the actual post of the photo on the flickr site.
+ * The functionality for browsing and viewing photos relies  on Flickr’s
+ * public API. This program uses a MainActivity which has 3 async tasks for
+ * downloading the Json object and the 2 images. Then there is a WebViewActivity
+ * that is used to display the website when the image is clicked. Then there
+ * is a LoadNewImageService which is used to load new images in the background
+ * every 10 seconds when the app is no longer active. This strings.xml file
+ * is where all of the strings for this program is externalized. This program
+ * does not have a lot strings since majority of it has to do with the flickr
+ * photos and buttons that make the app functional. The Urls are externalized
+ * here because they were too long.
+ */
+-->
+<resources>
+    <string name="app_name">FlickrViewer</string>
+    <string name="dateOne">Date</string>
+    <string name="fileOne">File</string>
+    <string name="tagOne">Tag</string>
+    <string name="dateTwo">Date</string>
+    <string name="fileTwo">File</string>
+    <string name="tagTwo">Tag</string>
+    <string name="mainUrlPart1"><![CDATA[https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=c68268937007bf1cc8ac4be2d67276b0&extras=original_format,date_taken,url_c,tags&per_page=5&page=]]></string>
+    <string name="mainUrlPart2"><![CDATA[&format=json&nojsoncallback=1]]></string>
+    <string name="templateUrl">https://flickr.com/photos/</string>
+    <string name="serviceUrl"><![CDATA[https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=c68268937007bf1cc8ac4be2d67276b0&extras=original_format,date_taken,url_c,tags&per_page=10&page=1&format=json&nojsoncallback=1]]></string>
+</resources>

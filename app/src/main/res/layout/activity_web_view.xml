@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * @author: Rachel Stinnett
+ * @file: activity_web_view.xml
+ * @assignment: Programming Assignment 6- Flickr Viewer
+ * @course: CSC 317; Spring 2022
+ * @description: The purpose of this program is to be create an application
+ * for browsing and viewing photos from flickr. This program will allow the
+ * user to view and browse through actual photos that users of clicker have
+ * posted, and that are publicly available. If a user wants more details about
+ * an image, the user is able to click on the image, which would take the user
+ * to a web page view of the actual post of the photo on the flickr site.
+ * The functionality for browsing and viewing photos relies  on Flickr’s
+ * public API. This program uses a MainActivity which has 3 async tasks for
+ * downloading the Json object and the 2 images. Then there is a WebViewActivity
+ * that is used to display the website when the image is clicked. Then there
+ * is a LoadNewImageService which is used to load new images in the background
+ * every 10 seconds when the app is no longer active. This activity_web_view.xml
+ * is responsible for displaying a flickr webpage when an image is clicked. This
+ * xml does this by using a WebView which is an object that displays web
+ * content as part of the activity layout, and embeds web pages in a
+ * specially-designed environment for this app.
+ */
+-->
+<WebView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainWebview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+</WebView>
